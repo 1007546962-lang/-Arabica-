@@ -91,37 +91,42 @@
 
 
     <!-- Coffee origin map -->
-   <section class="section map-band" id="origin">
-      <div class="container">
-        <h2 class="section-title">Origins</h2>
-        <svg id="originSvg" viewBox="0 0 1200 260" fill="none">
-          <path id="originPath" d=" M40 220 C 260 120, 460 120, 600 180 S 960 240, 1160 60"
-                stroke="#bdbdbd" stroke-width="10" stroke-linecap="round"/>
+  <section class="section map-band" id="origin">
+  <div class="container">
+    <h2 class="section-title">Origins</h2>
+    <svg id="originSvg" viewBox="0 0 1200 260" fill="none"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path id="originPath" d="M40 220 C 260 120, 460 120, 600 180 S 960 240, 1160 60"
+            stroke="#bdbdbd" stroke-width="10" stroke-linecap="round"/>
 
+      <g class="pin" data-name="Ethiopia" transform="translate(180,140)">
+        <image href="./images/Ethiopia.webp" xlink:href="./images/Ethiopia.webp"
+               x="-42" y="-42" width="84" height="84" />
+        <text y="-34" text-anchor="middle" class="pin__label">Ethiopia</text>
+      </g>
 
-           <!-- Location pins -->
-          <g class="pin" data-name="Ethiopia" transform="translate(180,140)">
-            <image href="./images/Ethiopia.webp"  x="-42" y="-42" width="84" height="84" />
-            <text y="-34" text-anchor="middle" class="pin__label">Ethiopia</text>
-          </g>
+      <g class="pin" data-name="Kenya" transform="translate(520,170)">
+        <image href="./images/Kenya.webp" xlink:href="./images/Kenya.webp"
+               x="-42" y="-42" width="84" height="84" />
+        <text y="-34" text-anchor="middle" class="pin__label">Kenya</text>
+      </g>
 
-          <g class="pin" data-name="Kenya" transform="translate(520,170)">
-            <image href="./images/Kenya.webp"  x="-42" y="-42" width="84" height="84" />
-            <text y="-34" text-anchor="middle" class="pin__label">Kenya</text>
-          </g>
+      <g class="pin" data-name="Colombia" transform="translate(780,210)">
+        <image href="./images/Colombia.webp" xlink:href="./images/Colombia.webp"
+               x="-42" y="-42" width="84" height="84" />
+        <text y="-34" text-anchor="middle" class="pin__label">Colombia</text>
+      </g>
 
-          <g class="pin" data-name="Colombia" transform="translate(780,210)">
-            <image href="./images/Colombia.webp"  x="-42" y="-42" width="84" height="84" />
-           <text y="-34" text-anchor="middle" class="pin__label">Colombia</text>
-          </g>
+      <g class="pin" data-name="Japan" transform="translate(1080,80)">
+        <image href="./images/Japan.webp" xlink:href="./images/Japan.webp"
+               x="-42" y="-42" width="84" height="84" />
+        <text y="-34" text-anchor="middle" class="pin__label">Japan</text>
+      </g>
+    </svg>
+  </div>
+</section>
 
-          <g class="pin" data-name="Japan" transform="translate(1080,80)">
-            <image href="./images/Japan.webp"  x="-42" y="-42" width="84" height="84" />
-            <text y="-34" text-anchor="middle" class="pin__label">Japan</text>
-          </g>       
-        </svg>
-      </div>
-   </section>
 
 
    <!-- Lifestyle section -->
