@@ -1,0 +1,520 @@
+
+/* Global theme tokens */
+:root {
+  --bg: #ffffff;
+  --ink: #111827;
+  --muted: #6b7280;
+  --accent: #D8C7A1;
+  --card: #f7f7f7;
+}
+
+
+
+/* Better box model */
+* {
+  box-sizing: border-box;
+}
+
+
+
+/*Ensure full-height layout */
+html, body {
+  height: 100%;
+}
+
+
+
+/*Base typography and colors */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+
+/*Constrained centered container */
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+
+
+
+/*Links inherit color, no underline */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+/*Section vertical rhythm */
+.section{
+  padding: 72px 0;
+}
+
+
+
+/*Muted foreground */
+.muted {
+  color: var(--muted);
+}
+
+
+
+/*Topbar theme */
+.topbar {
+  background: #000;
+  color: #fff;
+}
+
+
+
+/*Flex row for topbar */
+.topbar__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+
+
+/*Topbar center nav links */
+.topbar__center a {
+  color: #fff;
+  margin: 0 14px;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+
+
+
+/*Brand weight */
+.topbar__left {
+  font-weight: 700;
+}
+
+
+
+/*Right button hamburger*/
+.topbar__right {
+  border-color: #fff;
+  color: #fff;
+  background: transparent;
+}
+
+
+
+/*Drawer nav layout */
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+
+/*Primary button base */
+.btn {
+  padding: 10px 16px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+/* Secondary button transparent */
+.btn.secondary {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+
+
+/* Light button on dark bg */
+.secondary-dark {
+  background: #fff;
+  color: #111;
+  border-color: #111;
+}
+
+
+
+/*Subtle breathing animation */
+@keyframes pulse {
+  0% { transform: scale(.98); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(.98); }
+}
+
+
+
+/*Apply pulse to button */
+.btn.pulse {
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+
+/*Hero container layout */
+.hero__center{
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+
+
+/* Hero headline */
+.hero__title {
+  font-size: clamp(42px, 7.5vw, 88px);
+  line-height: 1.02;
+  margin: 6px 0 10px;
+}
+
+
+
+/*Eyebrow label */
+.eyebrow {
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+
+
+/*Compact badge */
+.badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 4px 10px;
+  border: 1px solid #111;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+
+/* Hero section spacing and overflow */
+.hero {
+  padding: 64px 0 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/*ean top wrapper */
+.hero__beanTop {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 8px;
+}
+
+
+
+/*Bean image  */
+.hero__beanTop img {
+  width: min(220px, 26vw);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 32px rgba(0, 0, 0,.18);
+}
+
+
+/* Bean stack container*/
+.bean-stack {
+  position: relative;
+  height: 520px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+
+
+/* Single bean particle */
+.bean {
+  position: absolute;
+  width: 30px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=200&auto=format&fit=crop') center/cover;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0,.15));
+  opacity: 0;
+}
+
+
+
+/* Flavor cloud container */
+.flavour-cloud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  font-weight: 700;
+}
+
+
+
+/* Cloud item positioning & size */
+.flavour-cloud span {
+  position: absolute;
+  font-size: clamp(16px, 2.8vw, 34px);
+}
+
+
+
+/*Map band background */
+.map-band {
+  background: #f1efea;
+}
+
+
+
+/* Section title spacing */
+.section-title {
+  margin: 0 0 16px;
+}
+
+
+
+/*Origin SVG sizing */
+#originSvg {
+  width: 100%;
+  height: 260px;
+  display: block;
+}
+
+
+/*Pin image clipping and outline */
+.pin image {
+  clip-path: circle(42px at center);
+  border-radius: 50%;
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+  box-shadow: 0 0 6px rgba(0, 0, 0,0.2);
+}
+
+
+
+/*Pivot and initial opacity for pins */
+.pin {
+  transform-origin: center;
+  opacity: 0;
+}
+
+
+
+/*Pin label styling */
+.pin__label {
+  font-size: 14px;
+  fill: #111;
+}
+
+
+/* Generic 12-col grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+
+
+/*Lifestyle header layout */
+.lifestyle__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+
+
+/*Card base in grid */
+.lifestyle__grid .card {
+  grid-column: span 3;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+
+
+/*Large card spans 6 cols */
+.lifestyle__grid .card--lg {
+  grid-column: span 6;
+}
+
+
+/* Image reveal & fit */
+.lifestyle__grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+
+/*Feature video wrapper */
+.video-hero {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+
+
+/*nline video sizing */
+.video-hero video {
+  width: 100%;
+  display: block;
+}
+
+
+
+/* Centered circular play button */
+.video-hero__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .7);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  line-height: 68px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+/*Flavour item row */
+.flavour-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+  padding: 24px;
+}
+
+
+
+/*Highlighted flavour pulse */
+.flavours .active-card {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+
+
+/*About section dark theme */
+.about {
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 28px 28px 0 0;
+}
+
+
+
+/*About grid layout */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+
+/*About images */
+.about__img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+}
+
+
+/*Form inline layout */
+form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+/*Email input styling */
+input[type=email] {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-width: 260px;
+}
+
+
+/*Footer styling */
+footer {
+  padding: 48px 0;
+  color: #6b7280;
+}
+
+
+
+/*  Responsive: adjust card spans on <=768px */
+@media (max-width: 768px) {
+  .lifestyle__grid .card--lg{
+    grid-column: span 12;
+  }
+
+
+  .lifestyle__grid .card {
+    grid-column: span 6;
+  }
+}
+
+
+
+/*Flavour item: re-declare before MQ override */
+.flavour-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 12px;
+}
+
+
+
+/*Flavour image sizing (desktop) */
+.flavour-item img {
+  height: clamp(220px, 28vh, 320px);
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/*Shoelace carousel ratio and radius */
+section.flavours sl-carousel {
+  --aspect-ratio: 16/9;
+  border-radius: 16px;
+}
+
+
+/*Mobile flavour image size */
+@media (max-width: 768px) {
+  .flavour-item img {
+    height: 200px;
+  }
+}
