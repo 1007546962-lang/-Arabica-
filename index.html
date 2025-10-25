@@ -5,294 +5,289 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>%Arabica – Single Page</title>
 
-
-  <!-- Shoelace Web Components library -->
+  <!-- Shoelace Web Components -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/shoelace.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.1/cdn/themes/light.css"/>
 
-
-  <!-- GSAP animation library and ScrollTrigger plugin -->
+  <!-- GSAP & ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Local stylesheet -->
+  <!-- Site stylesheet -->
   <link rel="stylesheet" href="./styles.css"/>
-  </head>
+</head>
+<body>
 
+  <!-- Drawer (mobile menu) -->
+  <sl-drawer label="Menu" placement="start" id="navDrawer">
+    <nav class="drawer-nav">
+      <a href="#hero">Home</a>
+      <a href="#origin">Origin</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#featureVideo">Stores</a>
+      <a href="#flavours">Flavours</a>
+      <a href="#subscribe">Subscribe</a>
+    </nav>
+  </sl-drawer>
 
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="container topbar__row">
+      <div class="topbar__left" aria-label="brand">% ARABICA</div>
 
-
-  <body>
-
-     <!-- Slide-out navigation drawer -->
-    <sl-drawer label="Menu" placement="start" id="navDrawer">
-      <nav class="drawer-nav">
-        <a href="#hero">Home</a>
-        <a href="#origin">Origin</a>
-        <a href="#lifestyle">Lifestyle</a>
-        <a href="#featureVideo">Stores</a>
-        <a href="#flavours">Flavours</a>
-        <a href="#subscribe">Subscribe</a>
+      <nav class="topbar__center" aria-label="Primary">
+        <a href="#about">STORY</a>
+        <a href="#flavours">COFFEE</a>
+        <a href="#subscribe">SUBSCRIBE</a>
       </nav>
-    </sl-drawer>
 
+      <button
+        class="topbar__right btn secondary"
+        id="hamburger"
+        aria-controls="navDrawer"
+        aria-expanded="false"
+        aria-label="Open menu">☰</button>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <section class="section hero container" id="hero">
+    <div class="hero__center">
+      <p class="eyebrow">% arabica <span class="badge">2025 HARVEST</span></p>
+      <h1 class="hero__title"><span>SEE THE</span><br/>WORLD<br/><span>THROUGH COFFEE</span></h1>
 
-    
-     <!-- Top navigation bar -->
-    <header class="topbar">
-      <div class="container topbar__row">
-        <div class="topbar__left">% ARABICA</div>
-        <nav class="topbar__center" aria-label="Primary">
-          <a href="#story">STORY</a>
-          <a href="#flavours">COFFEE</a>
-          <a href="#subscribe">SUBSCRIBE</a>
-        </nav> 
-        <button class="topbar__right btn secondary" id="hamburger" aria-controls="navDrawer" aria-expanded="false" aria-label="Open menu">☰</button>
-      </div> 
-    </header>
-
-
-
-
-      <!-- Hero section -->
-    <section class="section hero container" id="hero">
-      <div class="hero__center">
-        <p class="eyebrow">% arabica <span class="badge">2025 HARVEST</span></p><!-- Small label -->
-        <h1 class="hero__title"><span>SEE THE</span><br/>WORLD<br/><span>THROUGH COFFEE</span></h1><!-- Main title -->
-
-        <div class="hero__beanTop">
-          <img src="./images/bean-center.png" alt="Coffee bean"/><!-- Center bean image -->
-        </div>
-
-      
-
-
-      <div class="bean-stack" id="beanStack"></div><!-- Animation placeholder -->
-      <div class="flavour-cloud" id="flavourCloud">
-           <span style="left:14%; top:36%">Fruity</span>
-           <span style="right: 14%; top: 32%">Nutty</span>
-           <span style="left: 12%; top: 52%">Citrus</span>
-           <span style="right:20%; top: 54%">Chocolate</span>
-           <span style="right:24%; top: 68%">Caramel</span>
-           <span style="left: 10%; top: 66%">Floral</span>
-           <span style="right: 12%; top: 78%">Smooth</span>
+      <div class="hero__beanTop">
+        <img src="./images/bean-center.png" alt="Coffee bean" width="420" height="420" loading="eager"/>
       </div>
 
+      <div class="bean-stack" id="beanStack" aria-hidden="true"></div>
 
-      <p class="muted hero__sub">Hand-selected beans roasted in small batches for a clean, layered cup.</p><!-- Subtitle -->
-      <div class="cta"> <!-- Call-to-action buttons -->
-        <a class="btn" href="#Origin">Explore the Origin</a>
+      <div class="flavour-cloud" id="flavourCloud" aria-hidden="true">
+        <span style="left:14%; top:36%">Fruity</span>
+        <span style="right:14%; top:32%">Nutty</span>
+        <span style="left:12%; top:52%">Citrus</span>
+        <span style="right:20%; top:54%">Chocolate</span>
+        <span style="right:24%; top:68%">Caramel</span>
+        <span style="left:10%; top:66%">Floral</span>
+        <span style="right:12%; top:78%">Smooth</span>
+      </div>
+
+      <p class="muted hero__sub">Hand-selected beans roasted in small batches for a clean, layered cup.</p>
+
+      <div class="cta">
+        <a class="btn" href="#origin">Explore the Origin</a>
         <a class="btn secondary-dark" href="#flavours">Buy now</a>
       </div>
     </div>
-   </section>
+  </section>
 
-
-
-    <!-- Coffee origin map -->
+  <!-- Origins map (SVG) -->
   <section class="section map-band" id="origin">
-  <div class="container">
-    <h2 class="section-title">Origins</h2>
-    <svg id="originSvg" viewBox="0 0 1200 260" fill="none"
-         xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink">
-      <path id="originPath" d="M40 220 C 260 120, 460 120, 600 180 S 960 240, 1160 60"
-            stroke="#bdbdbd" stroke-width="10" stroke-linecap="round"/>
+    <div class="container">
+      <h2 class="section-title">Origins</h2>
 
-      <g class="pin" data-name="Ethiopia" transform="translate(180,140)">
-        <image href="./images/Ethiopia.webp" xlink:href="./images/Ethiopia.webp"
-               x="-42" y="-42" width="84" height="84" />
-        <text y="-34" text-anchor="middle" class="pin__label">Ethiopia</text>
-      </g>
+      <svg id="originSvg" viewBox="0 0 1200 260" fill="none"
+           xmlns="http://www.w3.org/2000/svg"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
+           role="img" aria-labelledby="origin-title">
+        <title id="origin-title">Arabica coffee origins</title>
 
-      <g class="pin" data-name="Kenya" transform="translate(520,170)">
-        <image href="./images/Kenya.webp" xlink:href="./images/Kenya.webp"
-               x="-42" y="-42" width="84" height="84" />
-        <text y="-34" text-anchor="middle" class="pin__label">Kenya</text>
-      </g>
+        <!-- curve -->
+        <path id="originPath"
+              d="M40 220 C 260 120, 460 120, 600 180 S 960 240, 1160 60"
+              stroke="#bdbdbd" stroke-width="10" stroke-linecap="round"/>
 
-      <g class="pin" data-name="Colombia" transform="translate(780,210)">
-        <image href="./images/Colombia.webp" xlink:href="./images/Colombia.webp"
-               x="-42" y="-42" width="84" height="84" />
-        <text y="-34" text-anchor="middle" class="pin__label">Colombia</text>
-      </g>
+        <!-- Ethiopia -->
+        <g class="pin" data-name="Ethiopia" transform="translate(180,140)">
+          <image href="./images/Ethiopia.webp" xlink:href="./images/Ethiopia.webp"
+                 x="-42" y="-42" width="84" height="84"
+                 onerror="this.setAttribute('href','./images/life1.png')"/>
+          <text y="-34" text-anchor="middle" class="pin__label">Ethiopia</text>
+        </g>
 
-      <g class="pin" data-name="Japan" transform="translate(1080,80)">
-        <image href="./images/Japan.webp" xlink:href="./images/Japan.webp"
-               x="-42" y="-42" width="84" height="84" />
-        <text y="-34" text-anchor="middle" class="pin__label">Japan</text>
-      </g>
-    </svg>
-  </div>
-</section>
+        <!-- Kenya -->
+        <g class="pin" data-name="Kenya" transform="translate(520,170)">
+          <image href="./images/Kenya.webp" xlink:href="./images/Kenya.webp"
+                 x="-42" y="-42" width="84" height="84"
+                 onerror="this.setAttribute('href','./images/life2.png')"/>
+          <text y="-34" text-anchor="middle" class="pin__label">Kenya</text>
+        </g>
 
+        <!-- Colombia -->
+        <g class="pin" data-name="Colombia" transform="translate(780,210)">
+          <image href="./images/Colombia.webp" xlink:href="./images/Colombia.webp"
+                 x="-42" y="-42" width="84" height="84"
+                 onerror="this.setAttribute('href','./images/life3.png')"/>
+          <text y="-34" text-anchor="middle" class="pin__label">Colombia</text>
+        </g>
 
-
-   <!-- Lifestyle section -->
-   <section class="section" id="lifestyle">
-  <div class="container">
-    <div class="lifestyle__head">
-      <h2>LIFESTYLE <span class="arabica-mark">% arabica</span></h2>
-      <p class="muted">Coffee that blends into your everyday rituals.</p>
-      <a class="btn secondary" href="#">See more stories</a>
+        <!-- Japan -->
+        <g class="pin" data-name="Japan" transform="translate(1080,80)">
+          <image href="./images/Japan.webp" xlink:href="./images/Japan.webp"
+                 x="-42" y="-42" width="84" height="84"
+                 onerror="this.setAttribute('href','./images/life4.png')"/>
+          <text y="-34" text-anchor="middle" class="pin__label">Japan</text>
+        </g>
+      </svg>
     </div>
+  </section>
 
-
-    <!-- Image preview dialog -->
-    <sl-dialog id="lightbox" label="Preview" class="lightbox" style="--width: min(1000px, 92vw);">
-    <img id="lightboxImg" alt="Preview" style="width:100%;height:auto;display:block;border-radius:12px"/>
-    </sl-dialog>
-
-
-
-     <!-- Image grid -->
-    <div class="grid lifestyle__grid">
-      <a class="card card--lg" href="#" data-img="./images/life1.png">
-        <img alt="Coffee process" src="./images/life1.png" />
-      </a>
-
-      <a class="card" href="#" data-img="./images/life2.png">
-        <img alt="Coffee beans close-up" src="./images/life2.png" />
-      </a>
-
-      <a class="card" href="#" data-img="./images/life3.png">
-        <img alt="Latte art top view" src="./images/life3.png" />
-      </a>
-
-      <a class="card" href="#" data-img="./images/life4.png">
-        <img alt="Coffee shop interior" src="./images/life4.png" />
-      </a>
-
-      <a class="card" href="#" data-img="./images/life5.png">
-        <img alt="Barista pouring milk" src="./images/life5.png" />
-      </a>
-
-      <a class="card" href="#" data-img="./images/life6.png">
-        <img alt="People enjoying coffee" src="./images/life6.png" />
-      </a>
-    </div>
-  </div>
-</section>
-
-
-
-
-
- <section class="section" id="featureVideo">
-  <div class="container">
-    <h2 class="section-title">Stores</h2>  
-    <div class="video-hero" style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;">
-      <iframe
-        src="https://www.youtube.com/embed/q7W-cXJUc5M?rel=0&modestbranding=1&playsinline=1"
-        title="Arabica store video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-        style="width:100%;height:100%;border:0"></iframe>
-    </div>
-  </div>
-</section>
-
-
-
-
-     <!-- Flavour carousel -->
-    <section class="section flavours" id="flavours">
-      <div class="container">
-        <h2 class="section-title">DISCOVER OUR FLAVOURS <span class="arabica-mark">% arabica</span></h2>
-        <sl-carousel pagination navigation mouse-dragging style="--aspect-ratio: 3/2; border-radius:16px">
-         
-
-          <!-- Flavour 1 -->
-          <sl-carousel-item>
-            <div class="flavour-item">
-              <img src="images/bean1.png" alt="Fruity bag"/>
-              <div><h3 class="active-card">Fruity</h3><p class="muted">Citrus, berry, bright finish.</p><button class="btn" data-burst>Try</button></div>                   
-            </div>       
-          </sl-carousel-item>
-
-
-
-
-          <!-- Flavour 2 -->
-          <sl-carousel-item>
-            <div class="flavour-item">
-              <img src="images/bean2.png" alt="Nutty bag"/>
-              <div><h3>Nutty</h3><p class="muted">Hazelnut, cocoa, round body.</p><button class="btn" data-burst>Try</button></div>  
-            </div>
-          </sl-carousel-item>
-
-
-          <!-- Flavour 3 -->
-          <sl-carousel-item>
-            <div class="flavour-item">
-              <img src="images/bean3.png" alt="Floral bag"/>
-              <div><h3>Floral</h3><p class="muted">Jasmine, tea-like, silky.</p><button class="btn" data-burst>Try</button></div> 
-            </div>
-          </sl-carousel-item>
-        </sl-carousel>  
+  <!-- Lifestyle -->
+  <section class="section" id="lifestyle">
+    <div class="container">
+      <div class="lifestyle__head">
+        <h2>LIFESTYLE <span class="arabica-mark">% arabica</span></h2>
+        <p class="muted">Coffee that blends into your everyday rituals.</p>
+        <a class="btn secondary" href="#">See more stories</a>
       </div>
-    </section>
 
+      <!-- Lightbox -->
+      <sl-dialog id="lightbox" label="Preview" class="lightbox" style="--width: min(1000px, 92vw);">
+        <img id="lightboxImg" alt="Preview" style="width:100%;height:auto;display:block;border-radius:12px"/>
+      </sl-dialog>
 
+      <!-- Grid -->
+      <div class="grid lifestyle__grid">
+        <a class="card card--lg" href="#" data-img="./images/life1.png">
+          <img alt="Coffee process" src="./images/life1.png" loading="lazy"/>
+        </a>
 
+        <a class="card" href="#" data-img="./images/life2.png">
+          <img alt="Coffee beans close-up" src="./images/life2.png" loading="lazy"/>
+        </a>
 
-    <!-- About section -->
-    <section class="section about" id="about">
-      <div class="container about__grid">
-        <div class="about__copy">
+        <a class="card" href="#" data-img="./images/life3.png">
+          <img alt="Latte art top view" src="./images/life3.png" loading="lazy"/>
+        </a>
 
-          <h2>ABOUT US</h2>
+        <a class="card" href="#" data-img="./images/life4.png">
+          <img alt="Coffee shop interior" src="./images/life4.png" loading="lazy"/>
+        </a>
 
-          <p class="muted"> %Arabica is a Kyoto-born specialty coffee brand driven by a passion for quality, simplicity, and design.
+        <a class="card" href="#" data-img="./images/life5.png">
+          <img alt="Barista pouring milk" src="./images/life5.png" loading="lazy"/>
+        </a>
+
+        <a class="card" href="#" data-img="./images/life6.png">
+          <img alt="People enjoying coffee" src="./images/life6.png" loading="lazy"/>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stores (video) -->
+  <section class="section" id="featureVideo">
+    <div class="container">
+      <h2 class="section-title">Stores</h2>
+      <div class="video-hero" style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;">
+        <iframe
+          src="https://www.youtube.com/embed/q7W-cXJUc5M?rel=0&modestbranding=1&playsinline=1"
+          title="Arabica store video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="width:100%;height:100%;border:0"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flavours -->
+  <section class="section flavours" id="flavours">
+    <div class="container">
+      <h2 class="section-title">DISCOVER OUR FLAVOURS <span class="arabica-mark">% arabica</span></h2>
+
+      <sl-carousel pagination navigation mouse-dragging style="--aspect-ratio: 3/2; border-radius:16px">
+        <sl-carousel-item>
+          <div class="flavour-item">
+            <img src="./images/bean1.png" alt="Fruity bag" loading="lazy"/>
+            <div>
+              <h3 class="active-card">Fruity</h3>
+              <p class="muted">Citrus, berry, bright finish.</p>
+              <button class="btn" data-burst>Try</button>
+            </div>
+          </div>
+        </sl-carousel-item>
+
+        <sl-carousel-item>
+          <div class="flavour-item">
+            <img src="./images/bean2.png" alt="Nutty bag" loading="lazy"/>
+            <div>
+              <h3>Nutty</h3>
+              <p class="muted">Hazelnut, cocoa, round body.</p>
+              <button class="btn" data-burst>Try</button>
+            </div>
+          </div>
+        </sl-carousel-item>
+
+        <sl-carousel-item>
+          <div class="flavour-item">
+            <img src="./images/bean3.png" alt="Floral bag" loading="lazy"/>
+            <div>
+              <h3>Floral</h3>
+              <p class="muted">Jasmine, tea-like, silky.</p>
+              <button class="btn" data-burst>Try</button>
+            </div>
+          </div>
+        </sl-carousel-item>
+      </sl-carousel>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about__grid">
+      <div class="about__copy">
+        <h2>ABOUT US</h2>
+
+        <p class="muted">
+          %Arabica is a Kyoto-born specialty coffee brand driven by a passion for quality, simplicity, and design.
           Our philosophy, “See the world through coffee,” inspires every part of our journey—from sourcing beans at origin
-          farms to serving each cup with precision and care.</p>
+          farms to serving each cup with precision and care.
+        </p>
 
-          
-          <p class="muted">
-           We work closely with farmers across Latin America, Africa, and Asia to secure beans that express the unique
+        <p class="muted">
+          We work closely with farmers across Latin America, Africa, and Asia to secure beans that express the unique
           character of their regions. Roasting is performed with meticulous control in small batches to highlight
           balance, clarity, and sweetness in every cup. Whether espresso or pour-over, each method is treated as
-          craftsmanship—simple, honest, and exact. </p>
-         
-          <a class="btn">start</a>
-        </div>
-        <img class="about__img" src="./images/store-1.png" alt="Store">
-        <img class="about__img" src="./images/store-2.png" alt="Barista">
+          craftsmanship—simple, honest, and exact.
+        </p>
+
+        <a class="btn" href="#subscribe">Start</a>
       </div>
-    </section>
 
+      <img class="about__img" src="./images/store-1.png" alt="Store" loading="lazy"/>
+      <img class="about__img" src="./images/store-2.png" alt="Barista" loading="lazy"/>
+    </div>
+  </section>
 
+  <!-- Subscribe -->
+  <section class="section" id="subscribe">
+    <div class="container">
+      <h2>Subscribe</h2>
 
-      <!-- Subscribe  -->
-    <section class="section" id="subscribe">
-      <div class="container">
-        <h2>Subscribe</h2>
-        <form id="subscribeForm" novalidate>
-          <input id="emailInput" type="email" placeholder="you@example.com" aria-label="Email" required>
-          <button class="btn" id="subscribeBtn" type="submit">Join</button>
-          <span id="emailError" class="muted" role="alert" aria-live="polite"></span>
-        </form>
-        <sl-alert variant="success" duration="3000" closable id="subscribeAlert">
-          <sl-icon slot="icon" name="check2-circle"></sl-icon>
-          Subscribed. Welcome.
-        </sl-alert>
-      </div>
-    </section>
+      <form id="subscribeForm" novalidate>
+        <input id="emailInput" type="email" placeholder="you@example.com" aria-label="Email" required>
+        <button class="btn" id="subscribeBtn" type="submit">Join</button>
+        <span id="emailError" class="muted" role="alert" aria-live="polite"></span>
+      </form>
 
+      <sl-alert variant="success" duration="3000" closable id="subscribeAlert">
+        <sl-icon slot="icon" name="check2-circle"></sl-icon>
+        Subscribed. Welcome.
+      </sl-alert>
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <footer>
+    <div class="container">© % Arabica</div>
+  </footer>
 
-     <!-- Footer -->
-    <footer>
-      <div class="container">© % Arabica</div>
-    </footer>
-
-
-    
-    <script defer src="./main.js"></script>
+  <!-- Site scripts -->
+  <script defer src="./main.js"></script>
 </body>
 </html>
+
 
 
 
